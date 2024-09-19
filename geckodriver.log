@@ -1,0 +1,332 @@
+1725427055106	geckodriver	INFO	Listening on 127.0.0.1:62934
+1725427636459	geckodriver	INFO	Listening on 127.0.0.1:63288
+1725427639511	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "63289" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Redux\\AppData\\Local\\Temp\\rust_mozprofilex7WiOU"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1725427639736	Marionette	INFO	Marionette enabled
+1725427639830	Marionette	INFO	Listening on port 63297
+WebDriver BiDi listening on ws://127.0.0.1:63289
+Read port: 63297
+1725427639953	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1725427669824	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript warning: https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js, line 1: Script terminated by timeout at:
+b@https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js:1:23280
+
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+1725427737034	Marionette	INFO	Stopped listening on port 63297
+Dynamically enable window occlusion 1
+console.error: "Error in worker resource://devtools/client/shared/source-map-loader/worker.js" ": "
+1725427767183	geckodriver	INFO	Listening on 127.0.0.1:63585
+1725427770238	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "63586" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Redux\\AppData\\Local\\Temp\\rust_mozprofilewWL2wG"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1725427770437	Marionette	INFO	Marionette enabled
+1725427770524	Marionette	INFO	Listening on port 63594
+WebDriver BiDi listening on ws://127.0.0.1:63586
+Read port: 63594
+1725427770625	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1725427800475	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript warning: https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js, line 1: Script terminated by timeout at:
+b@https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js:1:23280
+
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+1725427801896	Marionette	INFO	Stopped listening on port 63594
+Dynamically enable window occlusion 1
+console.error: "Error in worker resource://devtools/client/shared/source-map-loader/worker.js" ": "
+console.warn: services.settings: main/password-rules sync interrupted by shutdown
+console.warn: services.settings: main/addons-manager-settings sync interrupted by shutdown
+console.warn: services.settings: main/query-stripping sync interrupted by shutdown
+console.warn: services.settings: main/partitioning-exempt-urls sync interrupted by shutdown
+console.warn: services.settings: main/translations-wasm sync interrupted by shutdown
+console.warn: services.settings: main/search-config-overrides sync interrupted by shutdown
+console.warn: services.settings: main/search-config-overrides-v2 sync interrupted by shutdown
+console.warn: services.settings: main/search-config sync interrupted by shutdown
+console.warn: services.settings: main/fingerprinting-protection-overrides sync interrupted by shutdown
+console.warn: services.settings: main/cookie-banner-rules-list sync interrupted by shutdown
+console.warn: services.settings: main/search-default-override-allowlist sync interrupted by shutdown
+console.error: (new Error("IndexedDB: main/backup-common-passwords-list getLastModified() IndexedDB:  execute() The application is shutting down", "resource://services-settings/IDBHelpers.sys.mjs", 16))
+1725427838229	geckodriver	INFO	Listening on 127.0.0.1:63776
+1725427841282	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "63777" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Redux\\AppData\\Local\\Temp\\rust_mozprofiley8anvz"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1725427841481	Marionette	INFO	Marionette enabled
+1725427841566	Marionette	INFO	Listening on port 63785
+WebDriver BiDi listening on ws://127.0.0.1:63777
+Read port: 63785
+1725427841668	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js, line 1: Script terminated by timeout at:
+get@https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js:1:10021
+0TWp/e.invokeTask@https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js:1:9921
+y@https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js:1:23134
+b@https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js:1:23438
+
+1725427854374	Marionette	INFO	Stopped listening on port 63785
+Dynamically enable window occlusion 1
+1725427866513	geckodriver	INFO	Listening on 127.0.0.1:63899
+1725427869594	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "63900" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Redux\\AppData\\Local\\Temp\\rust_mozprofileUhAoYE"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1725427869794	Marionette	INFO	Marionette enabled
+1725427869879	Marionette	INFO	Listening on port 63908
+WebDriver BiDi listening on ws://127.0.0.1:63900
+Read port: 63908
+1725427869979	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1725427899841	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript warning: https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js, line 1: Script terminated by timeout at:
+get@https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js:1:10021
+0TWp/e.invokeTask@https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js:1:9921
+y@https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js:1:23134
+b@https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js:1:23438
+
+1725429365468	Marionette	INFO	Stopped listening on port 63908
+Dynamically enable window occlusion 1
+	Marionette	INFO	Marionette enabled
+1725427971807	Marionette	INFO	Listening on port 64092
+WebDriver BiDi listening on ws://127.0.0.1:64084
+Read port: 64092
+1725427971918	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1725428003814	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript warning: https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js, line 1: Script terminated by timeout at:
+y@https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js:1:22995
+b@https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js:1:23438
+
+1725429368972	Marionette	INFO	Stopped listening on port 64092
+Dynamically enable window occlusion 1
+f remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1725428050747	Marionette	INFO	Marionette enabled
+1725428050833	Marionette	INFO	Listening on port 64227
+WebDriver BiDi listening on ws://127.0.0.1:64218
+Read port: 64227
+1725428050921	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1725428080835	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript warning: https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js, line 1: Script terminated by timeout at:
+0TWp/e.invokeTask@https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js:1:9873
+y@https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js:1:23134
+b@https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js:1:23438
+
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+JavaScript error: resource://gre/modules/AsyncShutdown.sys.mjs, line 569: NotFoundError: No such JSProcessActor 'DevToolsProcess'
+1725429367554	Marionette	INFO	Stopped listening on port 64227
+Dynamically enable window occlusion 1
+console.error: "Error in worker resource://devtools/client/shared/source-map-loader/worker.js" ": "
+ window occlusion 1
+1725428289479	geckodriver	INFO	Listening on 127.0.0.1:64540
+1725428292532	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "64541" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Redux\\AppData\\Local\\Temp\\rust_mozprofiletm2ivv"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1725428292737	Marionette	INFO	Marionette enabled
+1725428292823	Marionette	INFO	Listening on port 64554
+WebDriver BiDi listening on ws://127.0.0.1:64541
+Read port: 64554
+1725428292923	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1725428323910	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript warning: https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js, line 1: Script terminated by timeout at:
+y@https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js:1:22995
+b@https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js:1:23438
+
+1725429368183	Marionette	INFO	Stopped listening on port 64554
+Dynamically enable window occlusion 1
+f remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1725428404273	Marionette	INFO	Marionette enabled
+1725428404358	Marionette	INFO	Listening on port 64809
+WebDriver BiDi listening on ws://127.0.0.1:64802
+Read port: 64809
+1725428404455	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript warning: https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js, line 1: Script terminated by timeout at:
+get@https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js:1:10021
+0TWp/e.invokeTask@https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js:1:9921
+y@https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js:1:23134
+b@https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js:1:23438
+
+1725428421573	Marionette	INFO	Stopped listening on port 64809
+Dynamically enable window occlusion 1
+1725428603252	geckodriver	INFO	Listening on 127.0.0.1:65168
+1725428606318	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "65169" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Redux\\AppData\\Local\\Temp\\rust_mozprofileQX5DL6"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1725428606521	Marionette	INFO	Marionette enabled
+1725428606605	Marionette	INFO	Listening on port 65177
+WebDriver BiDi listening on ws://127.0.0.1:65169
+Read port: 65177
+1725428606708	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1725428637365	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript warning: https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js, line 1: Script terminated by timeout at:
+b@https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js:1:23280
+
+1725428777997	Marionette	INFO	Stopped listening on port 65177
+Dynamically enable window occlusion 1
+mozprofileJ4h2Sz"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1725428683982	Marionette	INFO	Marionette enabled
+1725428684070	Marionette	INFO	Listening on port 65370
+Read port: 65370
+WebDriver BiDi listening on ws://127.0.0.1:65362
+1725428684114	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1725428715312	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript warning: https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js, line 1: Script terminated by timeout at:
+0TWp/e.prototype.runTask@https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js:1:4117
+0TWp/e.invokeTask@https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js:1:9928
+y@https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js:1:23134
+b@https://csapps.pacificpower.net/idm/polyfills.ed5ef6e9e626e253441f.js:1:23438
+
+1725428775412	Marionette	INFO	Stopped listening on port 65370
+Dynamically enable window occlusion 1
+ionette enabled
+1725428719292	Marionette	INFO	Listening on port 65508
+WebDriver BiDi listening on ws://127.0.0.1:65501
+Read port: 65508
+1725428719386	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1725428728144	Marionette	INFO	Stopped listening on port 65508
+Dynamically enable window occlusion 1
+1725428743431	geckodriver	INFO	Listening on 127.0.0.1:49224
+1725428746487	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "49225" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Redux\\AppData\\Local\\Temp\\rust_mozprofileaNUOqU"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1725428746704	Marionette	INFO	Marionette enabled
+1725428746789	Marionette	INFO	Listening on port 49234
+Read port: 49234
+WebDriver BiDi listening on ws://127.0.0.1:49225
+1725428746832	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://login.csapps.pacificpower.net."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://login.csapps.pacificpower.net."
+1725428760796	Marionette	INFO	Stopped listening on port 49234
+JavaScript warning: https://csapps.pacificpower.net/secure/polyfills.8f1ffb060f79d32e3e90.js, line 1: Script terminated by timeout at:
+0TWp/</S/<@https://csapps.pacificpower.net/secure/polyfills.8f1ffb060f79d32e3e90.js:1:13679
+
+Dynamically enable window occlusion 1
+1725428985352	geckodriver	INFO	Listening on 127.0.0.1:49588
+1725428988424	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "49589" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Redux\\AppData\\Local\\Temp\\rust_mozprofilesXz4cX"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1725428988636	Marionette	INFO	Marionette enabled
+1725428988721	Marionette	INFO	Listening on port 49597
+WebDriver BiDi listening on ws://127.0.0.1:49589
+Read port: 49597
+1725428988815	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://login.csapps.pacificpower.net."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://login.csapps.pacificpower.net."
+1725429020010	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript warning: https://csapps.pacificpower.net/secure/polyfills.8f1ffb060f79d32e3e90.js, line 1: Script terminated by timeout at:
+b@https://csapps.pacificpower.net/secure/polyfills.8f1ffb060f79d32e3e90.js:1:23280
+
+1725429031258	Marionette	INFO	Stopped listening on port 49597
+Dynamically enable window occlusion 1
+1725429033008	geckodriver	INFO	Listening on 127.0.0.1:49744
+1725429036035	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "49745" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Redux\\AppData\\Local\\Temp\\rust_mozprofilesBnL2S"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1725429036254	Marionette	INFO	Marionette enabled
+1725429036342	Marionette	INFO	Listening on port 49754
+WebDriver BiDi listening on ws://127.0.0.1:49745
+Read port: 49754
+1725429036483	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://login.csapps.pacificpower.net."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://login.csapps.pacificpower.net."
+1725429067299	addons.xpi	ERROR	System addon update list error SyntaxError: XMLHttpRequest.open: 'http://%(server)s/dummy-system-addons.xml' is not a valid URL.
+JavaScript warning: https://csapps.pacificpower.net/secure/polyfills.8f1ffb060f79d32e3e90.js, line 1: Script terminated by timeout at:
+b@https://csapps.pacificpower.net/secure/polyfills.8f1ffb060f79d32e3e90.js:1:23280
+
+1725429080774	Marionette	INFO	Stopped listening on port 49754
+Dynamically enable window occlusion 1
+1725429083978	geckodriver	INFO	Listening on 127.0.0.1:49907
+1725429087037	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "49908" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Redux\\AppData\\Local\\Temp\\rust_mozprofileyThGCo"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1725429087241	Marionette	INFO	Marionette enabled
+1725429087328	Marionette	INFO	Listening on port 49916
+WebDriver BiDi listening on ws://127.0.0.1:49908
+Read port: 49916
+1725429087426	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://login.csapps.pacificpower.net."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://login.csapps.pacificpower.net."
+1725429107696	Marionette	INFO	Stopped listening on port 49916
+Dynamically enable window occlusion 1
+1725429508545	geckodriver	INFO	Listening on 127.0.0.1:50534
+1725429511602	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "50535" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Redux\\AppData\\Local\\Temp\\rust_mozprofile8UX2w6"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1725429511804	Marionette	INFO	Marionette enabled
+1725429511885	Marionette	INFO	Listening on port 50543
+WebDriver BiDi listening on ws://127.0.0.1:50535
+Read port: 50543
+1725429511987	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://login.csapps.pacificpower.net."
+1725429516726	Marionette	INFO	Stopped listening on port 50543
+Dynamically enable window occlusion 1
+1725429553084	geckodriver	INFO	Listening on 127.0.0.1:50646
+1725429556176	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "50647" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Redux\\AppData\\Local\\Temp\\rust_mozprofileaWcZi4"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1725429556378	Marionette	INFO	Marionette enabled
+1725429556456	Marionette	INFO	Listening on port 50655
+WebDriver BiDi listening on ws://127.0.0.1:50647
+Read port: 50655
+1725429556557	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://login.csapps.pacificpower.net."
+1725429561202	Marionette	INFO	Stopped listening on port 50655
+Dynamically enable window occlusion 1
+console.error: SQLite JSM (Connection formhistory.sqlite#0): (new Error("Connection closed before committing the transaction.", "resource://gre/modules/Sqlite.sys.mjs", 891))
+JavaScript error: resource://gre/modules/Sqlite.sys.mjs, line 891: Error: Connection closed before committing the transaction.
+1725429705909	geckodriver	INFO	Listening on 127.0.0.1:50832
+1725429708931	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "50833" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Redux\\AppData\\Local\\Temp\\rust_mozprofile9Yp6AX"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1725429709127	Marionette	INFO	Marionette enabled
+1725429709210	Marionette	INFO	Listening on port 50841
+WebDriver BiDi listening on ws://127.0.0.1:50833
+Read port: 50841
+1725429709309	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://login.csapps.pacificpower.net."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://login.csapps.pacificpower.net."
+1725429723179	Marionette	INFO	Stopped listening on port 50841
+JavaScript warning: https://csapps.pacificpower.net/secure/polyfills.8f1ffb060f79d32e3e90.js, line 1: Script terminated by timeout at:
+0TWp/wt/s/n.args[0]@https://csapps.pacificpower.net/secure/polyfills.8f1ffb060f79d32e3e90.js:1:39502
+
+Dynamically enable window occlusion 1
+1725429756502	geckodriver	INFO	Listening on 127.0.0.1:51022
+1725429759553	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "51023" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Redux\\AppData\\Local\\Temp\\rust_mozprofile3W94RU"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+Dynamically enable window occlusion 0
+1725429759750	Marionette	INFO	Marionette enabled
+1725429759832	Marionette	INFO	Listening on port 51031
+WebDriver BiDi listening on ws://127.0.0.1:51023
+Read port: 51031
+1725429759931	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://login.csapps.pacificpower.net."
+console.warn: LoginRecipes: "Falling back to a synchronous message for: https://login.csapps.pacificpower.net."
+1725429777409	Marionette	INFO	Stopped listening on port 51031
+Dynamically enable window occlusion 1

@@ -1,0 +1,8 @@
+constants.py
+*.egg-info
+*.pyc
+*.pyo
+*.so
+*.DS_Store
+*.swp
+*.swo
