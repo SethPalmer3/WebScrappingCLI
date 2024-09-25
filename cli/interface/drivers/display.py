@@ -1,3 +1,4 @@
+from typing_extensions import NewType
 from ..messages import Message, Messenger, CLIMessages
 import os
 import sys
@@ -14,6 +15,99 @@ class HistoryElement:
         else:
             return False
 
+class DisplayElement:
+    def __init__(self,  row: int, col: int, width: int, height: int, z_order: int = 0) -> None:
+        self.z_order = z_order
+        self.row = row
+        self.col = col
+        self.width = width
+        self.height = height
+
+    @staticmethod
+    def move_cursor(row: int, col: int) -> None:
+        sys.stdout.write(f"\033[{row};{col}H")
+
+    @staticmethod
+    def move_cursor_up(amount: int) -> None:
+        sys.stdout.write(f"\033[{amount}A")
+
+    @staticmethod
+    def move_cursor_down(amount: int) -> None:
+        sys.stdout.write(f"\033[{amount}B")
+
+    @staticmethod
+    def move_cursor_right(amount: int) -> None:
+        sys.stdout.write(f"\033[{amount}C")
+
+    @staticmethod
+    def move_cursor_left(amount: int) -> None:
+        sys.stdout.write(f"\033[{amount}D")
+
+    @staticmethod
+    def reset_mode() -> None:
+        sys.stdout.write("\033[0m")
+
+    def draw(self, ref_row: int, ref_col: int) -> None:
+        pass
+
+class TextElement(DisplayElement):
+    def __init__(self, text: str, row: int, col: int, width: int, height: int, z_order: int) -> None:
+        super().__init__(row, col, width, height, z_order)
+        self.text = text
+
+    def draw(self, ref_row: int, ref_col: int) -> None:
+        new_row = ref_row + self.row
+        new_col = ref_col + self.col
+        DisplayElement.move_cursor(new_row, new_col)
+        for i in range(self.height):
+            sys.stdout.write(f"{self.text[i*self.width: (i+1)*self.width]}")
+            if i + 1 < self.height:
+                sys.stdout.write("\n")
+
+
+class InputElement(DisplayElement):
+    def __init__(self, preamble: str, row: int, col: int, input_row: int, input_col: int, width: int, height: int, z_order: int) -> None:
+        super().__init__(row, col, width, height, z_order)
+        self.text = preamble
+        self.input_row = input_row
+        self.input_col = input_col
+
+    def draw(self, ref_row: int, ref_col: int) -> None:
+        new_row = ref_row + self.row
+        new_col = ref_col + self.col
+        DisplayElement.move_cursor(new_row, new_col)
+        for i in range(self.height):
+            sys.stdout.write(f"{self.text[i*self.width: (i+1)*self.width]}")
+            if i + 1 < self.height:
+                sys.stdout.write("\n")
+        DisplayElement.move_cursor(new_row+self.input_row, new_col+self.input_col)
+
+class Window(DisplayElement):
+    def __init__(self, elements: list[DisplayElement], row_num: int = 0, col_num: int = 0, width: int = 0, height: int = 0, z_order: int = 0) -> None:
+        super().__init__(row_num, col_num, width, height, z_order)
+        self.elements = elements
+        self.elements.sort(key=lambda e: e.z_order)
+
+    def draw(self, ref_row: int, ref_col: int) -> None:
+        new_row = ref_row + self.row
+        new_col = ref_col + self.col
+        for e in self.elements:
+            e.draw(new_row, new_col)
+        DisplayElement.move_cursor(new_row+self.height, new_col)
+
+class Terminal(Window):
+    def __init__(self, elements: list[DisplayElement]) -> None:
+        #Get terminal size
+        width = os.get_terminal_size().columns
+        height = os.get_terminal_size().lines
+        
+        super().__init__(elements, row_num=0, col_num=0, width=width, height=height, z_order=-1)
+
+    def draw(self, ref_row: int = 0, ref_col: int = 0) -> None:
+        os.system('clear')
+        super().draw(ref_row, ref_col)
+        sys.stdout.flush()
+
 class Displayer:
     def __init__(self, user_input_marker: str, respond_marker: str) -> None:
         self.history = []
@@ -26,21 +120,27 @@ class Displayer:
     def add_display_element(self, input_str: str) -> None:
         self.inline_message(input_str)
 
-    def display(self):
-        os.system('clear')
-        for h in self.history:
-            write_string = ""
-            if isinstance(h, HistoryElement):
-                write_string = f"{h.input_str}\n{self.respond_marker}{h.output_str}"
-            else:
-                write_string = f"{str(h)}"
-            sys.stdout.write(write_string)
+    def display(self, skip_history: bool = False):
+        if skip_history:
+            os.system('clear')
+            for h in self.history:
+                write_string = ""
+                if isinstance(h, HistoryElement):
+                    write_string = f"{h.input_str}\n{self.respond_marker}{h.output_str}"
+                else:
+                    write_string = f"{str(h)}"
+                sys.stdout.write(write_string)
         sys.stdout.write(f"\n{self.user_input_marker}")
         sys.stdout.flush()
 
     def important_message(self, message: str):
         os.system('clear')
         sys.stdout.write(f"\033[1m{message}\033[0m\n")
+        sys.stdout.flush()
+
+    def error_message(self, message: str):
+        os.system('clear')
+        sys.stdout.write(f"\033[1;91m{message}\033[0m\n")
         sys.stdout.flush()
 
     def inline_message(self, message: str):
