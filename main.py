@@ -1,4 +1,4 @@
-from selenium import webdriver
+# from selenium import webdriver
 from datetime import datetime
 import calendar
 import os
@@ -10,9 +10,7 @@ from actions.nonwebactions.customactions.customaction import CustomAction
 from actions.nonwebactions.nonwebaction import NonWebAction
 from actions.action import Action
 
-from cli.command_processor.cli_interface import ScrapperHanlder
-from cli.interface.interface import CLInterface, CommandHanlder
-
+from cli.interface.interface import *
 def calculate_usage(filepath, rate):
     print("Calcualting usage")
 
@@ -100,10 +98,10 @@ def main():
     Scrapper.SKIPWEBSCRAPE = args.skip_web_scrape
     Scrapper.HEADLESS = args.headless
 
-    cli_interface = CLInterface(ScrapperHanlder(), ">> ", " -> ")
-    while True:
-        cli_interface.loop()
-    
+    displayer = Displayer(">> ", " -> ")
+    commander = CommandMessenger()
+    usr_msngr = UserInterfaceMessenger(displayer, commander)
+    usr_msngr.listen()
 
 
 if __name__ == '__main__':
