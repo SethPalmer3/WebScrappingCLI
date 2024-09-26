@@ -11,10 +11,8 @@ class UserInterfaceMessenger(Messenger):
         self.name = "UserInterfaceMessenger"
 
     def listen(self) -> None:
-        skip = False
         while True:
-            self.displayer.display(skip)
-            skip = False
+            self.displayer.display()
             usr_input = sys.stdin.readline().strip()
             cmnd_message = Message(self, self.commander, CLIMessages.DATA, usr_input.split(" "))
             self.send_to(cmnd_message)
@@ -27,5 +25,4 @@ class UserInterfaceMessenger(Messenger):
             elif return_message.message == CLIMessages.ECHO:
                 self.displayer.add_display_element(" ".join(return_message.message_data))
             elif return_message.message == CLIMessages.ERROR:
-                skip = True
-                self.displayer.error_message("Could not find command: " + return_message.message_data[0])
+                self.displayer.error_message(return_message.message_data[0])

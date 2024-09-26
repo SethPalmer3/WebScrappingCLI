@@ -12,6 +12,7 @@ from actions.action import Action
 
 from cli.interface.interface import *
 from cli.interface.drivers.display import *
+from cli.interface.messengers.commandmessenger import DummyCommandMessenger
 def calculate_usage(filepath, rate):
     print("Calcualting usage")
 
@@ -100,7 +101,7 @@ def main():
     Scrapper.HEADLESS = args.headless
 
     displayer = Displayer(">> ", " -> ")
-    commander = CommandMessenger()
+    commander = CommandMessenger([DummyCommandMessenger()])
     usr_msngr = UserInterfaceMessenger(displayer, commander)
     usr_msngr.listen()
     # text = TextElement("Hello World", row=0, col=0, width=20, height=5, z_order=0)
