@@ -13,6 +13,7 @@ class InputElement(DisplayElement):
 
     def draw(self, ref_row: int, ref_col: int) -> None:
         if not self.drawable:
+            return
         new_row = ref_row + self.row
         new_col = ref_col + self.col
         DisplayElement.move_cursor(new_row, new_col)

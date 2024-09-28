@@ -11,7 +11,7 @@ class CommandMessenger(Messenger):
     def get_command(self, message: Message) -> Message:
         if message.message_data[0] in self.commands.keys():
             new_msg = self.commands[message.message_data[0]](message, self)
-            if new_msg.destMessenger == self:
+            if new_msg.destMessenger == self or new_msg.srcMessenger == message.destMessenger:
                 new_msg.destMessenger = message.srcMessenger
                 new_msg.srcMessenger = self
             return new_msg
@@ -31,12 +31,12 @@ class CommandMessenger(Messenger):
 class DummyCommandMessenger(CommandMessenger):
     @staticmethod
     def dummy_stop(m: Message, _messenger: Messenger) -> Message:
-        new_m = Message(m.srcMessenger, m.destMessenger, CLIMessages.STOP, [])
+        new_m = Message(m.destMessenger, m.srcMessenger, CLIMessages.STOP, [])
         return new_m
 
     @staticmethod
     def dummy_echo(m: Message, _messenger: Messenger) -> Message:
-        new_m = Message(m.srcMessenger, m.destMessenger, CLIMessages.ECHO, [m.message_data[1:]])
+        new_m = Message(m.destMessenger, m.srcMessenger, CLIMessages.ECHO, m.message_data[1:])
         return new_m
 
     def __init__(self) -> None:

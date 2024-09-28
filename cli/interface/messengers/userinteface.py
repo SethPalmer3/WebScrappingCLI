@@ -1,4 +1,8 @@
 import sys
+from itertools import chain
+
+from cli.interface.drivers.terminal.displayelements.textelement import StyleElement
+
 from ..messages import Message, Messenger, CLIMessages
 from .commandmessenger import CommandMessenger
 from ..drivers.display import Displayer
@@ -20,9 +24,12 @@ class UserInterfaceMessenger(Messenger):
             if return_message.message == CLIMessages.STOP:
                 self.displayer.important_message("Shutting down...")
                 break
-            elif return_message.message == CLIMessages.DISPLAY:
-                self.displayer.add_history_element(usr_input, return_message.message_data[0])
-            elif return_message.message == CLIMessages.ECHO:
-                self.displayer.add_display_element(" ".join(return_message.message_data))
-            elif return_message.message == CLIMessages.ERROR:
-                self.displayer.error_message(return_message.message_data[0])
+            else:
+                try:
+                    if return_message.message == CLIMessages.ERROR:
+                        self.displayer.error_message(" ".join(return_message.message_data))
+                    self.displayer.add_display_element(" ".join(return_message.message_data))
+                except TypeError:
+                    self.displayer.add_display_element(str(return_message.message_data))
+
+
