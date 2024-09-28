@@ -104,10 +104,6 @@ def main():
     commander = CommandMessenger([DummyCommandMessenger()])
     usr_msngr = UserInterfaceMessenger(displayer, commander)
     usr_msngr.listen()
-    # text = TextElement("Hello World", row=0, col=0, width=20, height=5, z_order=0)
-    # text_input = InputElement(" >> \n", row=3, col=0, width=20, height=2, z_order=1, input_row=0, input_col=4)
-    # t = Terminal([text, text_input])
-    # t.draw()
 
 
 if __name__ == '__main__':
