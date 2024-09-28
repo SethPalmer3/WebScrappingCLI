@@ -6,6 +6,7 @@ class CLIMessages(Enum):
     ECHO = 'echo'
     DISPLAY = 'display'
     ERROR = 'error'
+    OK = 'ok'
     STOP = 'stop'
 
 class Message:
