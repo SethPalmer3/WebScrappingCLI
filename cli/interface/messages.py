@@ -16,6 +16,9 @@ class Message:
         self.message = message
         self.message_data = message_data
 
+    def respond_message(self, respond_message_type: CLIMessages, message_data: list[Any] = []) -> "Message":
+        return Message(self.destMessenger, self.srcMessenger, respond_message_type, message_data)
+
 class Messenger:
     def __init__(self) -> None:
         self.receive_queue = []
