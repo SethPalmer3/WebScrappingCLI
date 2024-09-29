@@ -1,8 +1,10 @@
 import os, calendar
 from datetime import datetime
+from typing import Any
 from selenium import webdriver
 from actions.action import Action
 from actions.nonwebactions.nonwebaction import NonWebAction
+from cli.interface.messages import Message, CLIMessages
 
 def calculate_usage(filepath, rate):
     print("Calcualting usage")
@@ -46,8 +48,20 @@ class Scrapper:
     def __init__(self, url, *args):
         self.url = url
         self.actions = list(args)
+    
+    def start(self):
+        options = webdriver.FirefoxOptions()
+        self.driver = webdriver.Firefox(options=options)
+        self.driver.get(self.url)
+        self.prev_data=None
 
-    def scrape_usage(self):
+    def step(self, action: Action) -> tuple[CLIMessages, Any]:
+        if self.driver is None:
+            return (CLIMessages.ERROR, "Driver is not set")
+        self.prev_data = action.preform_action(self.prev_data, self.driver)
+        return (CLIMessages.OK, self.prev_data)
+
+    def scrape(self):
         print("Starting scrape...")
         pass_value = None
         if Scrapper.SKIPWEBSCRAPE:
