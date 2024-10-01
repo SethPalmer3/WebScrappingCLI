@@ -1,10 +1,13 @@
 import os, calendar
 from datetime import datetime
+import threading
 from typing import Any
 from selenium import webdriver
 from actions.action import Action
 from actions.nonwebactions.nonwebaction import NonWebAction
-from cli.interface.messages import Message, CLIMessages
+from cli.interface.messages import CLIMessages
+
+from multiprocessing.connection import Connection
 
 def calculate_usage(filepath, rate):
     print("Calcualting usage")
@@ -45,15 +48,24 @@ def replace_old_file(filepath):
 class Scrapper:
     SKIPWEBSCRAPE = False
     HEADLESS = True
-    def __init__(self, url, *args):
+    def __init__(self, connection: Connection, event: threading.Event, url, *args):
+        super().__init__()
         self.url = url
+        self.connection = connection
+        self.event = event
         self.actions = list(args)
     
     def start(self):
         options = webdriver.FirefoxOptions()
+        options.add_argument("--headless")
         self.driver = webdriver.Firefox(options=options)
         self.driver.get(self.url)
         self.prev_data=None
+        while True:
+            self.event.wait()
+            new_action = self.connection.recv()
+            ret_message = self.step(new_action)
+            self.connection.send(ret_message)
 
     def step(self, action: Action) -> tuple[CLIMessages, Any]:
         if self.driver is None:

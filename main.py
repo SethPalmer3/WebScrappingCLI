@@ -6,6 +6,7 @@ from cli.interface.drivers.display import *
 from cli.interface.messengers.commandmessenger import DummyCommandMessenger
 
 from actions.scrappingmanager.scrapper import Scrapper
+from actions.scrappingmanager.scrapmanager import ScrapeCommander
 
 
 def main():
@@ -22,7 +23,7 @@ def main():
     Scrapper.HEADLESS = args.headless
 
     displayer = Displayer(">> ", " -> ")
-    commander = CommandMessenger([DummyCommandMessenger()])
+    commander = CommandMessenger([DummyCommandMessenger(), ScrapeCommander()])
     usr_msngr = UserInterfaceMessenger(displayer, commander)
     usr_msngr.listen()
 
