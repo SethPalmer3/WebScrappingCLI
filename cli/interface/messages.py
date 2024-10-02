@@ -10,6 +10,7 @@ class CLIMessages(Enum):
     ERROR = 'error'
     OK = 'ok'
     STOP = 'stop'
+    STOPPED = 'stopped'
 
 class Message:
     def __init__(self, source: "Messenger", destination: "Messenger", message: CLIMessages, message_data: list[Any]) -> None:
@@ -20,6 +21,9 @@ class Message:
 
     def respond_message(self, respond_message_type: CLIMessages, message_data: list[Any] = []) -> "Message":
         return Message(self.destMessenger, self.srcMessenger, respond_message_type, message_data)
+
+    def new_receiver(self, messenger: "Messenger") -> "Message":
+        return Message(self.srcMessenger, messenger, self.message, self.message_data)
 
     def __repr__(self) -> str:
         return f"Message({self.srcMessenger.name}->{self.destMessenger.name}, message={self.message.name}, message_data={self.message_data})"
@@ -37,3 +41,6 @@ class Messenger:
 
     def send_to(self, message: Message) -> None:
         message.destMessenger.receive(message)
+
+    def stop(self, message: Message) -> Message:
+        return message.respond_message(CLIMessages.STOPPED)

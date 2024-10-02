@@ -15,14 +15,15 @@ INSTRUCTIONS = 'instructions'
 
 class ScrapeCommander(CommandMessenger):
     @staticmethod
-    def base_action(message: Message, receiver: Messenger, action_class, **kwargs) -> Message:
+    def base_action(message: Message, action_class, **kwargs) -> Message:
+        receiver = message.destMessenger
         if not isinstance(receiver, ScrapeCommander):
             return message.respond_message(CLIMessages.ERROR, ["Cannot Handle ScrapeCommander Commands"])
 
         if len(message.message_data) == 0:
             return message.respond_message(CLIMessages.ERROR, ["No xpath provided"])
 
-        new_action = action_class(kwargs)
+        new_action = action_class(**kwargs)
         return_data = None
         if receiver.__getattribute__(SCRAPPER) is not None:
             mang_conn: Connection = receiver.__getattribute__(MANAGER_END)
@@ -38,40 +39,40 @@ class ScrapeCommander(CommandMessenger):
             return message.respond_message(return_data[0], [return_data[1]])
 
     @staticmethod
-    def action_find(message: Message, receiver: Messenger) -> Message:
+    def action_find(message: Message) -> Message:
         """
         message_data = "command", "xpath", ["frame"]
         """
         return ScrapeCommander.base_action(
             message, 
-            receiver, 
             FindElementsAction, 
-            xpath=message.message_data[1], 
+            search_term=message.message_data[1], 
             frame=None if len(message.message_data) < 3 else message.message_data[2]
         )
 
     @staticmethod
-    def action_click(message: Message, receiver: Messenger) -> Message:
+    def action_click(message: Message) -> Message:
         """
         message_data = "command", "xpath", ["frame"]
         """
-        return ScrapeCommander.base_action(message, receiver, ClickAction, xpath=message.message_data[1], frame=None if len( message.message_data ) < 3 else message.message_data[2])
+        return ScrapeCommander.base_action(message, ClickAction, xpath=message.message_data[1], frame=None if len( message.message_data ) < 3 else message.message_data[2])
 
     @staticmethod
-    def action_type(message: Message, receiver: Messenger) -> Message:
+    def action_type(message: Message) -> Message:
         """
         message_data = "command", "xpath", "type data", ["frame"]
         """
-        return ScrapeCommander.base_action(message, receiver, TypingAction,
+        return ScrapeCommander.base_action(message, TypingAction,
                                            xpath=None if len(message.message_data) == 0 else message.message_data[1],
                                            text="" if len(message.message_data) < 3 else message.message_data[2],
                                            frame=None if len(message.message_data) < 4 else message.message_data[3])
 
     @staticmethod
-    def action_url(message: Message, receiver: Messenger) -> Message:
+    def action_url(message: Message) -> Message:
         """
         A function that will spin up a web driver thread to run concurrenly with main execution
         """
+        receiver = message.destMessenger
         if not isinstance(receiver, ScrapeCommander):
             return message.respond_message(CLIMessages.ERROR, ["Cannot Handle ScrapeCommander Commands"])
 
@@ -81,19 +82,20 @@ class ScrapeCommander(CommandMessenger):
         url = message.message_data[1]
         action_ready_event = threading.Event()
         (manager_end, scrapper_end) = Pipe()
-        receiver.__setattr__('scrapper', threading.Thread(target=Scrapper(scrapper_end, action_ready_event, url, *receiver.__getattribute__('instructions')).start))
-        receiver.__getattribute__('scrapper').start()
-        receiver.__setattr__('action_ready_event', action_ready_event)
-        receiver.__setattr__('manager_end', manager_end)
+        receiver.__setattr__(SCRAPPER, threading.Thread(target=Scrapper(scrapper_end, action_ready_event, url, *receiver.__getattribute__(INSTRUCTIONS)).start))
+        receiver.__getattribute__(SCRAPPER).start()
+        receiver.__setattr__(ACTION_READY_EVENT, action_ready_event)
+        receiver.__setattr__(MANAGER_END, manager_end)
 
         return message.respond_message(CLIMessages.OK)
 
     @staticmethod
-    def action_start(message: Message, receiver: Messenger) -> Message:
+    def action_start(message: Message) -> Message:
+        receiver = message.destMessenger
         if not isinstance(receiver, ScrapeCommander):
             return message.respond_message(CLIMessages.ERROR, ["Cannot Handle ScrapeCommander Commands"])
 
-        if (driver := receiver.__getattribute__('scrapper')) is not None:
+        if (driver := receiver.__getattribute__(SCRAPPER)) is not None:
             driver.scrape()
             return message.respond_message(CLIMessages.OK)
         return message.respond_message(CLIMessages.ERROR, ["No URL set for this scrape job"])
@@ -110,3 +112,9 @@ class ScrapeCommander(CommandMessenger):
             "start" : ScrapeCommander.action_start,
             "find": ScrapeCommander.action_find
         }
+
+    def stop(self, message: Message) -> Message:
+        if self.scrapper is not None:
+            self.__getattribute__(ACTION_READY_EVENT).set()
+            self.__getattribute__(MANAGER_END).send(CLIMessages.STOP)
+        return message.respond_message(CLIMessages.STOPPED)

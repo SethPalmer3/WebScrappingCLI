@@ -21,8 +21,9 @@ class UserInterfaceMessenger(Messenger):
             cmnd_message = Message(self, self.commander, CLIMessages.DATA, usr_input.split(" "))
             self.send_to(cmnd_message)
             return_message = self.receive_queue.pop(0)
-            if return_message.message == CLIMessages.STOP:
+            if return_message.message == CLIMessages.STOPPED:
                 self.displayer.important_message("Shutting down...")
+                self.commander.stop(cmnd_message)
                 break
             else:
                 try:

@@ -65,9 +65,12 @@ class Scrapper:
         while True:
             self.event.wait()
             new_action = self.connection.recv()
+            if isinstance(new_action, CLIMessages) and new_action == CLIMessages.STOP:
+                break
             ret_message = self.step(new_action)
             self.connection.send(ret_message)
             self.event.clear()
+        self.driver.close()
 
     def step(self, action: Action) -> tuple[CLIMessages, Any]:
         if self.driver is None:

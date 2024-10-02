@@ -3,9 +3,19 @@ from ..webaction import WebAction
 # from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
+
+ALL_LOOKUPS = [By.ID, By.XPATH, By.NAME, By.TAG_NAME, By.LINK_TEXT, By.CLASS_NAME, By.CSS_SELECTOR, By.PARTIAL_LINK_TEXT]
+
 class FindElementsAction(WebAction):
-    def __init__(self, xpath):
-        self.xpath = xpath
+    def __init__(self, search_term, frame=None):
+        self.search_term = search_term
+        self.frame = frame
 
     def preform_action(self, prev_action_output, driver):
-        return driver.find_element(By.XPATH, prev_action_output)
+        possible_elements = []
+        for lookfor in ALL_LOOKUPS:
+            try:
+                possible_elements += [e.get_property('xpath') for e in driver.find_elements(lookfor, self.search_term)]
+            except Exception:
+                continue
+        return possible_elements
