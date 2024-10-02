@@ -58,7 +58,7 @@ class Scrapper:
     def start(self):
         context = []
         options = webdriver.FirefoxOptions()
-        # options.add_argument("--headless")
+        options.add_argument("--headless")
         self.driver = webdriver.Firefox(options=options)
         self.driver.get(self.url)
         self.prev_data=None
@@ -67,8 +67,9 @@ class Scrapper:
             new_action = self.connection.recv()
             if isinstance(new_action, CLIMessages) and new_action == CLIMessages.STOP:
                 break
-            ret_message = self.step(new_action)
-            self.connection.send(ret_message)
+            ret_data = self.step(new_action)
+            print(ret_data)
+            self.connection.send(ret_data)
             self.event.clear()
         self.driver.close()
 
@@ -77,6 +78,8 @@ class Scrapper:
             return (CLIMessages.ERROR, "Driver is not set")
         try:
             self.prev_data = action.preform_action(self.prev_data, self.driver)
+            if isinstance(self.prev_data, list):
+                return (CLIMessages.DATA, self.prev_data)
             return (CLIMessages.OK, self.prev_data)
         except Exception as e:
             return (CLIMessages.ERROR, str(e))

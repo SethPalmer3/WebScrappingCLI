@@ -15,7 +15,9 @@ class FindElementsAction(WebAction):
         possible_elements = []
         for lookfor in ALL_LOOKUPS:
             try:
-                possible_elements += [e.get_property('xpath') for e in driver.find_elements(lookfor, self.search_term)]
+                for e in driver.find_elements(lookfor, self.search_term):
+                    if e not in possible_elements:
+                        possible_elements.append(f"{e.tag_name}:{e.id}")
             except Exception:
                 continue
         return possible_elements

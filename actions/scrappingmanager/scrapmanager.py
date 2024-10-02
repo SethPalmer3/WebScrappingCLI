@@ -35,8 +35,11 @@ class ScrapeCommander(CommandMessenger):
 
         if return_data is None:
             return message.respond_message(CLIMessages.OK)
+        elif isinstance(return_data[1], list):
+            return message.respond_message(return_data[0], return_data[1])
         else:
             return message.respond_message(return_data[0], [return_data[1]])
+
 
     @staticmethod
     def action_find(message: Message) -> Message:
