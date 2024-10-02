@@ -56,8 +56,9 @@ class Scrapper:
         self.actions = list(args)
     
     def start(self):
+        context = []
         options = webdriver.FirefoxOptions()
-        options.add_argument("--headless")
+        # options.add_argument("--headless")
         self.driver = webdriver.Firefox(options=options)
         self.driver.get(self.url)
         self.prev_data=None
@@ -66,12 +67,16 @@ class Scrapper:
             new_action = self.connection.recv()
             ret_message = self.step(new_action)
             self.connection.send(ret_message)
+            self.event.clear()
 
     def step(self, action: Action) -> tuple[CLIMessages, Any]:
         if self.driver is None:
             return (CLIMessages.ERROR, "Driver is not set")
-        self.prev_data = action.preform_action(self.prev_data, self.driver)
-        return (CLIMessages.OK, self.prev_data)
+        try:
+            self.prev_data = action.preform_action(self.prev_data, self.driver)
+            return (CLIMessages.OK, self.prev_data)
+        except Exception as e:
+            return (CLIMessages.ERROR, str(e))
 
     def scrape(self):
         print("Starting scrape...")

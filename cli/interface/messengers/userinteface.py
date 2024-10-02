@@ -28,7 +28,9 @@ class UserInterfaceMessenger(Messenger):
                 try:
                     if return_message.message == CLIMessages.ERROR:
                         self.displayer.error_message(" ".join(return_message.message_data))
-                    self.displayer.add_display_element(" ".join(return_message.message_data))
+                    else:
+
+                        self.displayer.add_display_element(" ".join(return_message.message_data))
                 except TypeError:
                     self.displayer.add_display_element(str(return_message.message_data))
 

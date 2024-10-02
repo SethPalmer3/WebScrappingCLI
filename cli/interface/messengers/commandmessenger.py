@@ -4,7 +4,7 @@ from collections.abc import Callable
 class CommandMessenger(Messenger):
     def __init__(self, command_managers: list["CommandMessenger"] = []) -> None:
         super().__init__()
-        self.name = "CommandMessenger"
+        self.name = self.__class__.__name__
         self.commands: dict[str, Callable[[Message, Messenger], Message]] = {}
         self.command_managers: list["CommandMessenger"] = command_managers
 
@@ -18,9 +18,9 @@ class CommandMessenger(Messenger):
         else:
             for commander in self.command_managers:
                 other_msg = commander.get_command(message)
-                if other_msg.message != CLIMessages.ERROR:
+                if other_msg.message != CLIMessages.COMMAND_NOT_FOUND:
                     return other_msg
-            err_msg = Message(self, message.srcMessenger, CLIMessages.ERROR, ["Could not find command: " + message.message_data[0]])
+            err_msg = Message(self, message.srcMessenger, CLIMessages.COMMAND_NOT_FOUND, ["Could not find command: " + message.message_data[0]])
             return err_msg 
 
     def receive(self, message: Message) -> None:

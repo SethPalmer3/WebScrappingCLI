@@ -3,6 +3,8 @@ from typing import Any
 
 class CLIMessages(Enum):
     DATA = 'data'
+    COMMAND = 'command'
+    COMMAND_NOT_FOUND = 'command not found'
     ECHO = 'echo'
     DISPLAY = 'display'
     ERROR = 'error'

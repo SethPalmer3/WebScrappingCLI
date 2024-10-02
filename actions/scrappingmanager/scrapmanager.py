@@ -4,6 +4,7 @@ from cli.interface.messengers.commandmessenger import CommandMessenger
 from cli.interface.messages import CLIMessages, Message, Messenger
 
 from ..webactions.interactingactions import ClickAction, TypingAction
+from ..webactions.noninteractingactions import FindElementsAction
 
 import threading
 
@@ -22,15 +23,32 @@ class ScrapeCommander(CommandMessenger):
             return message.respond_message(CLIMessages.ERROR, ["No xpath provided"])
 
         new_action = action_class(kwargs)
+        return_data = None
         if receiver.__getattribute__(SCRAPPER) is not None:
             mang_conn: Connection = receiver.__getattribute__(MANAGER_END)
             mang_conn.send(new_action)
             action_event: threading.Event = receiver.__getattribute__(ACTION_READY_EVENT)
             action_event.set()
-            mang_conn.recv()
-        receiver.__getattribute__('instructions').append(new_action)
+            return_data = mang_conn.recv()
+        receiver.__getattribute__(INSTRUCTIONS).append(new_action)
 
-        return message.respond_message(CLIMessages.OK)
+        if return_data is None:
+            return message.respond_message(CLIMessages.OK)
+        else:
+            return message.respond_message(return_data[0], [return_data[1]])
+
+    @staticmethod
+    def action_find(message: Message, receiver: Messenger) -> Message:
+        """
+        message_data = "command", "xpath", ["frame"]
+        """
+        return ScrapeCommander.base_action(
+            message, 
+            receiver, 
+            FindElementsAction, 
+            xpath=message.message_data[1], 
+            frame=None if len(message.message_data) < 3 else message.message_data[2]
+        )
 
     @staticmethod
     def action_click(message: Message, receiver: Messenger) -> Message:
@@ -51,6 +69,9 @@ class ScrapeCommander(CommandMessenger):
 
     @staticmethod
     def action_url(message: Message, receiver: Messenger) -> Message:
+        """
+        A function that will spin up a web driver thread to run concurrenly with main execution
+        """
         if not isinstance(receiver, ScrapeCommander):
             return message.respond_message(CLIMessages.ERROR, ["Cannot Handle ScrapeCommander Commands"])
 
@@ -58,10 +79,10 @@ class ScrapeCommander(CommandMessenger):
             return message.respond_message(CLIMessages.ERROR, ["No url provided"])
 
         url = message.message_data[1]
-        # receiver.__setattr__('scrapper', Scrapper(url, receiver.__getattribute__('instructions')))
         action_ready_event = threading.Event()
         (manager_end, scrapper_end) = Pipe()
         receiver.__setattr__('scrapper', threading.Thread(target=Scrapper(scrapper_end, action_ready_event, url, *receiver.__getattribute__('instructions')).start))
+        receiver.__getattribute__('scrapper').start()
         receiver.__setattr__('action_ready_event', action_ready_event)
         receiver.__setattr__('manager_end', manager_end)
 
@@ -79,11 +100,13 @@ class ScrapeCommander(CommandMessenger):
 
     def __init__(self, command_managers: list["CommandMessenger"] = []) -> None:
         super().__init__(command_managers)
+        self.name = "ScrapeCommander"
         self.instructions = []
         self.scrapper = None
         self.commands = {
             "click": ScrapeCommander.action_click,
             "type" : ScrapeCommander.action_type,
             "url" : ScrapeCommander.action_url,
-            "start" : ScrapeCommander.action_start
+            "start" : ScrapeCommander.action_start,
+        "find": ScrapeCommander.action_find
         }

@@ -1,3 +1,4 @@
+from typing import Any
 from ..webaction import WebAction
 
 from selenium.webdriver.common.by import By
@@ -15,7 +16,7 @@ class InteractingAction(WebAction):
     def interact_action(self, driver):
         pass
 
-    def preform_action(self, prev_action_output, driver):
+    def preform_action(self, prev_action_output, driver) -> Any:
         if self.frame:
             print(f"Switching to frame")
             driver.switch_to.frame(self.frame)
@@ -28,9 +29,7 @@ class InteractingAction(WebAction):
                 EC.presence_of_element_located((By.XPATH, self.xpath))
             )
         except Exception as e:
-            print(e)
-            driver.close()
-            return None
+            raise e
         elem = driver.find_element(By.XPATH, self.xpath)
 
         print(f"Found <{elem.tag_name}>{elem.text}</{elem.tag_name}>")
