@@ -108,5 +108,5 @@ class ScrapeCommander(CommandMessenger):
             "type" : ScrapeCommander.action_type,
             "url" : ScrapeCommander.action_url,
             "start" : ScrapeCommander.action_start,
-        "find": ScrapeCommander.action_find
+            "find": ScrapeCommander.action_find
         }
