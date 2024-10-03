@@ -1,10 +1,10 @@
 from typing import Any
+from uuid import UUID
 from .messagetypes import MessageTypes
-from .messenger import Messenger
 
 
 class Message:
-    def __init__(self, srcMessenger: Messenger | None, dstMessenger: Messenger | None, message_type: MessageTypes, message_data: Any) -> None:
+    def __init__(self, srcMessenger: UUID, dstMessenger: UUID, message_type: MessageTypes, message_data: Any) -> None:
         self.srcMessenger = srcMessenger
         self.dstMessenger = dstMessenger
         self.message_type = message_type
@@ -18,4 +18,7 @@ class Message:
 
     def respond_message(self, mt: MessageTypes, data: Any = None) -> "Message":
         return Message(self.dstMessenger, self.srcMessenger, mt, data)
+    
+    def forward_message(self, new_messnger: UUID) -> "Message":
+        return Message(self.srcMessenger, new_messnger, self.message_type, self.message_data)
 
