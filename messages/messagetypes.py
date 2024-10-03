@@ -7,3 +7,6 @@ class MessageTypes(Enum):
     STOPPED = 'stopped'
     OK = 'ok'
     ERROR = 'error'
+
+    def __repr__(self) -> str:
+        return super().__repr__()

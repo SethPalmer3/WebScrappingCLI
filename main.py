@@ -1,9 +1,7 @@
 # from selenium import webdriver
 import argparse
 
-from cli.interface.interface import *
-from cli.interface.drivers.display import *
-from cli.interface.messengers.commandmessenger import DummyCommandMessenger
+from .messages import Messenger, MessageTypes, Message
 
 from actions.scrappingmanager.scrapper import Scrapper
 from actions.scrappingmanager.scrapmanager import ScrapeCommander
