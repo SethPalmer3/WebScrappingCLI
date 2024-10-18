@@ -4,7 +4,7 @@ from .messagetypes import MessageTypes
 
 
 class Message:
-    def __init__(self, srcMessenger: UUID, dstMessenger: UUID, message_type: MessageTypes, message_data: Any) -> None:
+    def __init__(self, srcMessenger, dstMessenger, message_type: MessageTypes, message_data: Any) -> None:
         self.srcMessenger = srcMessenger
         self.dstMessenger = dstMessenger
         self.message_type = message_type
