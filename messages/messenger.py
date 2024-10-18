@@ -1,3 +1,4 @@
+import dill
 from multiprocessing import Pipe
 from multiprocessing.connection import Connection
 import threading
@@ -19,6 +20,12 @@ class Messenger(threading.Thread):
         for m in self.messengers:
             m.start()
 
+    def send(self, msg: object) -> None:
+        self.internal_end.send(dill.dumps(msg))
+
+    def recv(self) -> object:
+        return dill.loads(self.internal_end.recv())
+
     def __eq__(self, value: object, /) -> bool:
         if isinstance(value, Messenger):
             return self.id == value.id
@@ -28,6 +35,7 @@ class Messenger(threading.Thread):
 
     def __hash__(self) -> int:
         return hash(id(self))
+
     def __str__(self) -> str:
         return self.__repr__()
 
@@ -39,9 +47,9 @@ class Messenger(threading.Thread):
 
     def run(self) -> None:
         while True:
-            incoming_message = self.internal_end.recv()
+            incoming_message = self.recv()
             if not isinstance(incoming_message, Message): # Make sure the data is a message
-                self.internal_end.send(Message(self, None, MessageTypes.ERROR, "Invalid message type"))
+                self.internal_end.send(dill.dumps(Message(self, None, MessageTypes.ERROR, "Invalid message type")))
                 continue
 
             incoming_message: Message = incoming_message
@@ -49,23 +57,23 @@ class Messenger(threading.Thread):
             if incoming_message.message_type == MessageTypes.STOP: # Stop this thread and all its messengers
                 print("Stopping")
                 for m in self.messengers:
-                    m.get_connection().send(incoming_message.forward_message(m.id))
+                    m.send(incoming_message.forward_message(m.id))
                     m.join(timeout=1.0)
 
                 respond = incoming_message.respond_message(MessageTypes.STOPPED)
-                self.internal_end.send(respond)
+                self.send(respond)
                 break
             elif self != incoming_message.dstMessenger: # If this message is for a different messenger
                 for m in self.messengers:
                     if m.id == incoming_message.dstMessenger:
-                        m.get_connection().send(incoming_message)
+                        m.send(incoming_message)
                         break
 
-                self.internal_end.send(incoming_message.respond_message(MessageTypes.ERROR, "Invalid message destination"))
+                self.send(incoming_message.respond_message(MessageTypes.ERROR, "Invalid message destination"))
             else: # This message is for this messenger
                 try:
                     msg = self.commands[incoming_message.message_data["command"]](incoming_message)
-                    self.internal_end.send(msg)
+                    self.send(msg)
                 except KeyError:
-                    self.internal_end.send(incoming_message.respond_message(MessageTypes.ERROR, {"data": ["Unknown command"]}))
+                    self.send(incoming_message.respond_message(MessageTypes.ERROR, {"data": ["Unknown command"]}))
 

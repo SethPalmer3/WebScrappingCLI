@@ -1,6 +1,7 @@
 # from selenium import webdriver
 import argparse
 from uuid import uuid4
+import dill
 
 from messages import Message, MessageTypes, Messenger
 
@@ -32,7 +33,13 @@ def main():
             "command": usr_input.split(' ')[0]
         })
         conn = mssngr.get_connection()
-        conn.send(mssg)
+        try:
+            conn.send(dill.dumps(mssg))
+            print(dill.loads(conn.recv()).message_data)
+        except Exception as e:
+            print(e)
+            break
+
 
 if __name__ == '__main__':
     main()

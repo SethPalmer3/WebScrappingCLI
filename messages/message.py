@@ -1,5 +1,5 @@
 from typing import Any
-from uuid import UUID
+from uuid import UUID, uuid4
 from .messagetypes import MessageTypes
 
 
@@ -9,6 +9,9 @@ class Message:
         self.dstMessenger = dstMessenger
         self.message_type = message_type
         self.message_data = message_data
+
+    def __hash__(self) -> int:
+        return hash(id(self))
 
     def __str__(self) -> str:
         return self.__repr__()
