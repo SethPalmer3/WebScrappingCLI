@@ -5,6 +5,8 @@ import threading
 from typing import Callable
 from uuid import uuid4, UUID
 
+from messages.messagetypes import MessageData
+
 from .message import Message, MessageTypes
 
 class MessengerThread:
@@ -66,14 +68,14 @@ class Messenger(threading.Thread):
             elif self != incoming_message.dstMessenger: # If this message is for a different messenger
                 for m in self.messengers:
                     if m.id == incoming_message.dstMessenger:
-                        m.send(incoming_message)
+                        m.send(incoming_message.forward_message(m.id))
                         break
 
                 self.send(incoming_message.respond_message(MessageTypes.ERROR, "Invalid message destination"))
             else: # This message is for this messenger
                 try:
-                    msg = self.commands[incoming_message.message_data["command"]](incoming_message)
+                    msg = self.commands[incoming_message.message_data[MessageData.COMMAND]](incoming_message)
                     self.send(msg)
                 except KeyError:
-                    self.send(incoming_message.respond_message(MessageTypes.ERROR, {"data": ["Unknown command"]}))
+                    self.send(incoming_message.respond_message(MessageTypes.ERROR, {MessageData.DATA: ["Unknown command"]}))
 

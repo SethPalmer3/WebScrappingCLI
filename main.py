@@ -4,6 +4,7 @@ from uuid import uuid4
 import dill
 
 from messages import Message, MessageTypes, Messenger
+from messages.messagetypes import MessageData
 
 # from actions.scrappingmanager.scrapper import Scrapper
 # from actions.scrappingmanager.scrapmanager import ScrapeCommander
@@ -24,15 +25,15 @@ def main():
 
     mssngr = Messenger()
     mssngr.commands = {
-        "echo": lambda x: x.respond_message(MessageTypes.COMMAND_RESULT, {"result": x.message_data["data"]}),
+        "echo": lambda x: x.respond_message(MessageTypes.COMMAND_RESULT, {MessageData.RESULT: x.message_data[MessageData.DATA]}),
     }
     mssngr.start()
     conn = mssngr.get_connection()
     while True:
         usr_input = input(">> ")
         mssg = Message(None, mssngr.id, MessageTypes.COMMAND, {
-            "command": usr_input.split(' ')[0],
-            "data": ' '.join(usr_input.split(' ')[1:])
+            MessageData.COMMAND: usr_input.split(' ')[0],
+            MessageData.DATA: ' '.join(usr_input.split(' ')[1:])
         })
         pckl = dill.dumps(mssg)
         conn.send(pckl)

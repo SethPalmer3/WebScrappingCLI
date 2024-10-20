@@ -10,3 +10,12 @@ class MessageTypes(Enum):
 
     def __repr__(self) -> str:
         return super().__repr__()
+
+class MessageData(Enum):
+    COMMAND = 'command'
+    RESULT = 'result'
+    DATUM = 'datum'
+    DATA = 'data'
+
+    def __repr__(self) -> str:
+        return super().__repr__()
