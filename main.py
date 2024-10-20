@@ -24,21 +24,20 @@ def main():
 
     mssngr = Messenger()
     mssngr.commands = {
-        "echo": lambda x: x.respond_message(MessageTypes.COMMAND_RESULT),
+        "echo": lambda x: x.respond_message(MessageTypes.COMMAND_RESULT, {"result": x.message_data["data"]}),
     }
     mssngr.start()
+    conn = mssngr.get_connection()
     while True:
         usr_input = input(">> ")
-        mssg = Message(None, mssngr, MessageTypes.COMMAND, {
-            "command": usr_input.split(' ')[0]
+        mssg = Message(None, mssngr.id, MessageTypes.COMMAND, {
+            "command": usr_input.split(' ')[0],
+            "data": ' '.join(usr_input.split(' ')[1:])
         })
-        conn = mssngr.get_connection()
-        try:
-            conn.send(dill.dumps(mssg))
-            print(dill.loads(conn.recv()).message_data)
-        except Exception as e:
-            print(e)
-            break
+        pckl = dill.dumps(mssg)
+        conn.send(pckl)
+        return_message: Message = dill.loads(conn.recv())
+        print(return_message.message_data)
 
 
 if __name__ == '__main__':
