@@ -30,14 +30,19 @@ def main():
     mssngr.start()
     conn = mssngr.get_connection()
     while True:
-        usr_input = input(">> ")
+        usr_input = input(">> ").strip()
         mssg = Message(None, mssngr.id, MessageTypes.COMMAND, {
             MessageData.COMMAND: usr_input.split(' ')[0],
             MessageData.DATA: ' '.join(usr_input.split(' ')[1:])
         })
+        if usr_input == MessageTypes.STOP.value:
+            mssg = Message(None, mssngr.id, MessageTypes.STOP, None)
         pckl = dill.dumps(mssg)
         conn.send(pckl)
         return_message: Message = dill.loads(conn.recv())
+        if return_message.message_type == MessageTypes.STOPPED:
+            mssngr.join()
+            break
         print(return_message.message_data)
 
 
