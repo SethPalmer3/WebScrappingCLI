@@ -43,7 +43,10 @@ def main():
         if return_message.message_type == MessageTypes.STOPPED:
             mssngr.join()
             break
-        print(return_message.message_data)
+        try:
+            print(return_message.message_data[MessageData.RESULT])
+        except KeyError:
+            print(return_message.message_data[MessageData.ERROR])
 
 
 if __name__ == '__main__':

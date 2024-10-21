@@ -16,6 +16,6 @@ class MessageData(Enum):
     RESULT = 'result'
     DATUM = 'datum'
     DATA = 'data'
-
+    ERROR = 'error'
     def __repr__(self) -> str:
         return super().__repr__()

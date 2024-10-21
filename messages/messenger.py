@@ -77,5 +77,5 @@ class Messenger(threading.Thread):
                     msg = self.commands[incoming_message.message_data[MessageData.COMMAND]](incoming_message)
                     self.send(msg)
                 except KeyError:
-                    self.send(incoming_message.respond_message(MessageTypes.ERROR, {MessageData.DATA: ["Unknown command"]}))
+                    self.send(incoming_message.respond_message(MessageTypes.ERROR, {MessageData.ERROR: "Unknown command"}))
 
